@@ -18,6 +18,7 @@ class TeacherBaseActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        tvTeacher.text = "TeacherID = ${auth.currentUser!!.uid}"
+        tvTeacher.text = "TeacherID = ${auth.currentUser!!.uid} " +
+                "\n ${auth.currentUser!!.email}"
     }
 }
