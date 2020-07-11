@@ -14,7 +14,8 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_login.*
-import java.util.Date
+import java.util.*
+import kotlin.random.Random
 
 class User(val isTeacher: Boolean, val timestamp: Timestamp)
 
@@ -38,6 +39,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(p0: View?) {
         val email = etEmail.text.toString()
         val password = etPassword.text.toString()
+        val form = etFormTeacher.text.toString().toLong()
         when(p0) {
             btnLogin -> {
                 auth.signInWithEmailAndPassword(email, password)
@@ -63,7 +65,9 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                             val user = auth.currentUser
                             val userData = hashMapOf(
                                 "Teacher" to true,
-                                "Date" to Timestamp(Date())
+                                "Date" to Timestamp(Date()),
+                                "Form" to form,
+                                "Added by" to "System"
                             )
 
                             db.collection("users").document(user!!.uid).set(userData)
@@ -91,8 +95,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             .addOnSuccessListener { document ->
                 if(document != null) {
                     Log.d("DOCUMENT REFERENCE", "DocumentSnapshot data: ${document.data}")
-                    val isTeacher = document.data!!["Teacher"]
-                    if(isTeacher.toString().toBoolean()) {
+                    val isTeacher = document.data!!["Teacher"] as Boolean
+                    if(isTeacher) {
                         val teacherIntent = Intent(this, TeacherBaseActivity::class.java)
                         startActivity(teacherIntent)
                     } else {
@@ -106,7 +110,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             }
             .addOnFailureListener { e ->
                 Log.d("DOCUMENT REFERENCE", "get failed with ", e)
-
             }
     }
 
