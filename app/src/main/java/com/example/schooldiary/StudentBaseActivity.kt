@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -11,7 +12,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_student_base.*
 
-class StudentBaseActivity : AppCompatActivity() {
+class StudentBaseActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var auth: FirebaseAuth
     private val db = Firebase.firestore
 
@@ -19,6 +20,7 @@ class StudentBaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_base)
         auth = Firebase.auth
+        btnCalendar.setOnClickListener(this)
     }
 
     override fun onStart() {
@@ -43,5 +45,14 @@ class StudentBaseActivity : AppCompatActivity() {
                 Log.d("DOCUMENT REFERENCE", "get failed with ", e)
                 tvStudent.text = "Failed to load data$e"
             }
+    }
+
+    override fun onClick(p0: View?) {
+        when(p0) {
+            btnCalendar -> {
+                val calendarIntent = Intent(this, Calendar::class.java)
+                startActivityForResult(calendarIntent,0)
+            }
+        }
     }
 }

@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(p0: View?) {
         val email = etEmail.text.toString()
         val password = etPassword.text.toString()
-        val form = etFormTeacher.text.toString().toLong()
+
         when(p0) {
             btnLogin -> {
                 auth.signInWithEmailAndPassword(email, password)
@@ -61,6 +61,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) {task ->
                         if(task.isSuccessful) {
+                            val form = etFormTeacher.text.toString().toLong()
                             Log.d("SIGNUP", "success")
                             val user = auth.currentUser
                             val userData = hashMapOf(
