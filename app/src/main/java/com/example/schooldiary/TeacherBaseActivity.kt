@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.activity_teacher_base.*
 import java.util.*
 import kotlin.random.Random
 
-class TeacherBaseActivity : AppCompatActivity(), View.OnClickListener, NavigationView.OnNavigationItemSelectedListener  {
+class TeacherBaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var drawer: DrawerLayout
@@ -49,7 +49,6 @@ class TeacherBaseActivity : AppCompatActivity(), View.OnClickListener, Navigatio
             navigationView.setCheckedItem(R.id.nav_teacher_calendar)
         }
     //    btnAddStudent.setOnClickListener(this)
-    //    btnCalendarTeacher.setOnClickListener(this)
     }
 
     override fun onBackPressed() {
@@ -68,7 +67,7 @@ class TeacherBaseActivity : AppCompatActivity(), View.OnClickListener, Navigatio
     }
 
 
-    override fun onClick(p0: View?) {/*
+    /*override fun onClick(p0: View?) {
         when(p0) {
             btnAddStudent -> {
                 val studentEmail = etAddStudentEmail.text.toString()
@@ -109,12 +108,8 @@ class TeacherBaseActivity : AppCompatActivity(), View.OnClickListener, Navigatio
                     }
 
             }
-            btnCalendarTeacher -> {
-                val calendarIntent = Intent(this, Calendar::class.java)
-                startActivityForResult(calendarIntent,0)
-            }
-        }*/
-    }
+        }
+    }*/
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
@@ -130,7 +125,8 @@ class TeacherBaseActivity : AppCompatActivity(), View.OnClickListener, Navigatio
                 Toast.makeText(this, "Settings",Toast.LENGTH_LONG).show()
             }
             R.id.nav_teacher_exit -> {
-                Toast.makeText(this, "Log Out",Toast.LENGTH_LONG).show()
+                auth.signOut()
+                finish()
             }
         }
 

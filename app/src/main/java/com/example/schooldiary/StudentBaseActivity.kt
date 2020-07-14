@@ -20,7 +20,8 @@ import kotlinx.android.synthetic.main.activity_drawer_teacher_main.*
 import kotlinx.android.synthetic.main.activity_drawer_teacher_main.toolbar
 import kotlinx.android.synthetic.main.activity_student_base.*
 
-class StudentBaseActivity : AppCompatActivity(), View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
+class StudentBaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
     private lateinit var auth: FirebaseAuth
     private val db = Firebase.firestore
     private lateinit var drawer: DrawerLayout
@@ -44,7 +45,6 @@ class StudentBaseActivity : AppCompatActivity(), View.OnClickListener, Navigatio
             ).commit()
             navigationView.setCheckedItem(R.id.nav_student_calendar)
         }
-        //btnCalendar.setOnClickListener(this)
     }
 
     override fun onBackPressed() {
@@ -78,15 +78,6 @@ class StudentBaseActivity : AppCompatActivity(), View.OnClickListener, Navigatio
             }*/
     }
 
-    override fun onClick(p0: View?) {
-        /*when(p0) {
-            btnCalendar -> {
-                val calendarIntent = Intent(this, Calendar::class.java)
-                startActivityForResult(calendarIntent,0)
-            }
-        }*/
-    }
-
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.nav_student_calendar -> {
@@ -101,7 +92,8 @@ class StudentBaseActivity : AppCompatActivity(), View.OnClickListener, Navigatio
                 Toast.makeText(this, "Settings",Toast.LENGTH_LONG).show()
             }
             R.id.nav_student_exit -> {
-                Toast.makeText(this, "Log Out",Toast.LENGTH_LONG).show()
+                auth.signOut()
+                finish()
             }
         }
 

@@ -48,6 +48,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                             Log.d("LOGIN", "success")
                             val user = auth.currentUser
                             Toast.makeText(baseContext, user?.uid, Toast.LENGTH_SHORT).show()
+                            etPassword.text.clear()
                             updateUi(user!!)
                         }
                         else {

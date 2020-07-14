@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Calendar"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".TeacherBaseActivity"
             android:screenOrientation="portrait" />
         <activity
