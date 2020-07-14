@@ -31,9 +31,9 @@ class TeacherBaseActivity : AppCompatActivity(), View.OnClickListener, Navigatio
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        auth = Firebase.auth
         setContentView(R.layout.activity_drawer_teacher_main)
         setSupportActionBar(toolbar)
-        auth = Firebase.auth
         drawer = teacher_drawer_layout
         var navigationView: NavigationView = nav_teacher_view
         navigationView.setNavigationItemSelectedListener(this)

@@ -15,12 +15,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:text="Teacher name text"
+        android:text="User name text"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="teacher@mail.com"/>
+        android:text="user@mail.com"/>
 
 </LinearLayout>

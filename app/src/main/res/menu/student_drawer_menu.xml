@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_student_calendar"
+            android:icon="@drawable/ic_calendar"
+            android:title="Calendar" />
+        <item
+            android:id="@+id/nav_student_myclass"
+            android:icon="@drawable/ic_students"
+            android:title="My class" />
+    </group>
+
+    <item android:title="Misc">
+        <menu>
+            <item
+                android:id="@+id/nav_student_settings"
+                android:icon="@drawable/ic_settings"
+                android:title="Settings" />
+            <item
+                android:id="@+id/nav_student_exit"
+                android:icon="@drawable/ic_exit"
+                android:title="Log Out" />
+
+        </menu>
+    </item>
+
+</menu>
