@@ -67,49 +67,6 @@ class TeacherBaseActivity : AppCompatActivity(), NavigationView.OnNavigationItem
     }
 
 
-    /*override fun onClick(p0: View?) {
-        when(p0) {
-            btnAddStudent -> {
-                val studentEmail = etAddStudentEmail.text.toString()
-                val studentPassword = Random.nextInt(1000000).toString()
-                tvAddStudentPassword.text = studentPassword.toString()
-                val docRef = db.collection("users").document(auth.currentUser!!.uid)
-                docRef.get()
-                    .addOnSuccessListener { document ->
-                        if (document != null) {
-                            Log.d("DOCUMENT REFERENCE", "DocumentSnapshot data: ${document.data}")
-                            var form = document.data!!["Form"] as Long
-                            auth.createUserWithEmailAndPassword(studentEmail, studentPassword)
-                                .addOnCompleteListener(this) {task ->
-                                    if(task.isSuccessful) {
-                                        Log.d("SIGNUP", "success")
-                                        val user = auth.currentUser
-                                        val userData = hashMapOf(
-                                            "Teacher" to false,
-                                            "Date" to Timestamp(Date()),
-                                            "Form" to form,
-                                            "Added by" to addedByEmail
-                                        )
-                                        db.collection("users").document(user!!.uid).set(userData)
-                                            .addOnSuccessListener {
-                                                Log.d("DATA WRITING", "DocumentSnapshot successfully written!")
-                                            }
-                                            .addOnFailureListener { e ->
-                                                Log.e("DATA WRITING", "Error writing document", e)
-                                            }
-                                    }
-                                    else {
-                                        Log.e("SIGNUP", "failed", task.exception)
-                                        Toast.makeText(baseContext, "Authentication failed", Toast.LENGTH_SHORT).show()
-                                        //updateUI
-                                    }
-                                }
-                        }
-                    }
-
-            }
-        }
-    }*/
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
