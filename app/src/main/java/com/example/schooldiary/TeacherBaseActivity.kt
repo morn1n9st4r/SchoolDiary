@@ -1,26 +1,18 @@
 package com.example.schooldiary
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.ui.AppBarConfiguration
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_drawer_teacher_main.*
-import kotlinx.android.synthetic.main.activity_teacher_base.*
-import java.util.*
-import kotlin.random.Random
 
 class TeacherBaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
 
@@ -38,7 +30,7 @@ class TeacherBaseActivity : AppCompatActivity(), NavigationView.OnNavigationItem
         var navigationView: NavigationView = nav_teacher_view
         navigationView.setNavigationItemSelectedListener(this)
         var toggle = ActionBarDrawerToggle(this, drawer, toolbar,
-                                R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+            R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer.addDrawerListener(toggle)
         toggle.syncState()
         if(savedInstanceState == null) {
@@ -61,7 +53,7 @@ class TeacherBaseActivity : AppCompatActivity(), NavigationView.OnNavigationItem
 
     override fun onStart() {
         super.onStart()
-/*        tvTeacher.text = "TeacherID = ${auth.currentUser!!.uid} " +
+        /*tvTeacher.text = "TeacherID = ${auth.currentUser!!.uid} " +
                 "\n ${auth.currentUser!!.email}"*/
         addedByEmail = auth.currentUser!!.email as String
     }

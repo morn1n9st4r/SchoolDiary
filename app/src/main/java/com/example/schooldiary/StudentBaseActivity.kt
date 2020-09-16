@@ -1,11 +1,8 @@
 package com.example.schooldiary
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
@@ -16,9 +13,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_drawer_student_main.*
-import kotlinx.android.synthetic.main.activity_drawer_teacher_main.*
 import kotlinx.android.synthetic.main.activity_drawer_teacher_main.toolbar
-import kotlinx.android.synthetic.main.activity_student_base.*
 
 class StudentBaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
